@@ -1,10 +1,3 @@
-import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
-import "./style.css";
-
-document.body.innerHTML = `
-  <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
-`;
-
 let counter: number = 0;
 
 document.body.innerHTML = `
@@ -20,3 +13,16 @@ button?.addEventListener("click", () => {
   counterElement!.textContent = `${counter}`;
   console.log(`Button clicked ${counter} times.`);
 });
+
+let last = performance.now();
+
+function animate(now: number) {
+  const dt = (now - last) / 1000; 
+  last = now;
+  counter += dt;
+  counterElement!.textContent = `${counter.toFixed(2)}`;
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
