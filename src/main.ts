@@ -20,9 +20,3 @@ button?.addEventListener("click", () => {
   counterElement!.textContent = `${counter}`;
   console.log(`Button clicked ${counter} times.`);
 });
-
-setInterval(() => {
-  counter += 1;
-  counterElement!.textContent = `${counter}`;
-  console.log(`Auto-incremented to ${counter}.`);
-}, 1000);
