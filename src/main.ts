@@ -17,7 +17,7 @@ button?.addEventListener("click", () => {
 let last = performance.now();
 
 function animate(now: number) {
-  const dt = (now - last) / 1000; 
+  const dt = (now - last) / 1000;
   last = now;
   counter += dt;
   counterElement!.textContent = `${counter.toFixed(2)}`;
