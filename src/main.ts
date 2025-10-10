@@ -5,9 +5,18 @@ document.body.innerHTML = `
   <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
 `;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const butn: HTMLButtonElement = document.createElement("button");
-  butn.type = "button";
-  butn.innerHTML = "😟";
-  document.body.append(butn);
+let counter: number = 0;
+
+document.body.innerHTML = `
+  <div>Counter: <span id="counter">0 </span></div>
+  <button id="emoButton">😟</button>
+`;
+
+const button = document.getElementById("emoButton");
+const counterElement = document.getElementById("counter");
+
+button?.addEventListener("click", () => {
+  counter += 1;
+  counterElement!.textContent = `${counter}`;
+  console.log(`Button clicked ${counter} times.`);
 });
