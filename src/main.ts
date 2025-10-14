@@ -75,8 +75,8 @@ const items: ItemDef[] = [
 const buyBtns: HTMLButtonElement[] = [BuyA, BuyB, BuyC];
 const countEls: HTMLElement[] = [CountA, CountB, CountC];
 
-let bought: number[] = items.map(() => 0);
-let cost: number[] = items.map((it) => it.base);
+const bought: number[] = items.map(() => 0);
+const cost: number[] = items.map((it) => it.base);
 
 const Price_Increase = 1.15;
 
