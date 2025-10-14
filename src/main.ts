@@ -23,9 +23,11 @@ document.body.innerHTML = `
 const button = document.getElementById("emoButton");
 const counterElement = document.getElementById("counter");
 const rateElement = document.getElementById("rate")!;
+
 const BuyA = document.getElementById("buyA") as HTMLButtonElement;
 const BuyB = document.getElementById("buyB") as HTMLButtonElement;
 const BuyC = document.getElementById("buyC") as HTMLButtonElement;
+
 const CountA = document.getElementById("countA")!;
 const CountB = document.getElementById("countB")!;
 const CountC = document.getElementById("countC")!;
@@ -33,6 +35,11 @@ const CountC = document.getElementById("countC")!;
 let boughtA = 0;
 let boughtB = 0;
 let boughtC = 0;
+
+let costA = 10;
+let costB = 100;
+let costC = 1000;
+const Price_Increase = 1.15;
 
 function buy(n: number): string {
   const s = n.toFixed(2);
@@ -46,9 +53,13 @@ function render(): void {
   CountB.textContent = `${boughtB}`;
   CountC.textContent = `${boughtC}`;
 
-  BuyA.disabled = counter < 10;
-  BuyB.disabled = counter < 100;
-  BuyC.disabled = counter < 1000;
+  BuyA.textContent = `A (+0.1/s, cost ${buy(costA)})`;
+  BuyB.textContent = `B (+2.0/s, cost ${buy(costB)})`;
+  BuyC.textContent = `C (+50/s, cost ${buy(costC)})`;
+
+  BuyA.disabled = counter < costA;
+  BuyB.disabled = counter < costB;
+  BuyC.disabled = counter < costC;
 }
 
 button?.addEventListener("click", () => {
@@ -57,31 +68,35 @@ button?.addEventListener("click", () => {
 });
 
 BuyA.addEventListener("click", () => {
-  if (counter >= 10) {
-    counter -= 10;
+  if (counter >= costA) {
+    counter -= costA;
     rate += 0.1;
     boughtA += 1;
+    costA *= Price_Increase;
     render();
   }
 });
 
 BuyB.addEventListener("click", () => {
-  if (counter >= 100) {
-    counter -= 100;
+  if (counter >= costB) {
+    counter -= costB;
     rate += 2.0;
     boughtB += 1;
+    costB *= Price_Increase;
     render();
   }
 });
 
 BuyC.addEventListener("click", () => {
-  if (counter >= 1000) {
-    counter -= 1000;
+  if (counter >= costC) {
+    counter -= costC;
     rate += 50.0;
     boughtC += 1;
+    costC *= Price_Increase;
     render();
   }
 });
+
 
 let last = performance.now();
 
