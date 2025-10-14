@@ -107,11 +107,36 @@ interface ItemDef {
 }
 
 const items: ItemDef[] = [
-  { name: "Cursors",  rate: 0.1,  base: 10,    description: "Autoclicks occasionally to help press the cookie." },
-  { name: "Grandmas", rate: 2.0,  base: 100,   description: "A nice grandma who bakes cookies with love." },
-  { name: "Farms",    rate: 50,   base: 1000,  description: "Fields and ovens that mass-produce tasty cookies." },
-  { name: "Factory",  rate: 100,  base: 5000,  description: "Industrial cookie lines churning out fresh batches." },
-  { name: "Mine",     rate: 500,  base: 10000, description: "Deep shafts extracting rare cookie ore—very productive!" },
+  {
+    name: "Cursors",
+    rate: 0.1,
+    base: 10,
+    description: "Autoclicks occasionally to help press the cookie.",
+  },
+  {
+    name: "Grandmas",
+    rate: 2.0,
+    base: 100,
+    description: "A nice grandma who bakes cookies with love.",
+  },
+  {
+    name: "Farms",
+    rate: 50,
+    base: 1000,
+    description: "Fields and ovens that mass-produce tasty cookies.",
+  },
+  {
+    name: "Factory",
+    rate: 100,
+    base: 5000,
+    description: "Industrial cookie lines churning out fresh batches.",
+  },
+  {
+    name: "Mine",
+    rate: 500,
+    base: 10000,
+    description: "Deep shafts extracting rare cookie ore—very productive!",
+  },
 ];
 
 const buyBtns: HTMLButtonElement[] = [BuyA, BuyB, BuyC, BuyD, BuyE];
@@ -148,7 +173,9 @@ function render(): void {
     const it = items[i];
 
     countEls[i].textContent = String(bought[i]);
-    buyBtns[i].textContent = `${it.name} (+${buy(it.rate)}/s, cost ${buy(cost[i])})`;
+    buyBtns[i].textContent = `${it.name} (+${buy(it.rate)}/s, cost ${
+      buy(cost[i])
+    })`;
     buyBtns[i].disabled = counter < cost[i];
     descEls[i].textContent = it.description;
 
