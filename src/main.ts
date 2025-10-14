@@ -22,8 +22,7 @@ document.body.innerHTML = `
 
 const button = document.getElementById("emoButton");
 const counterElement = document.getElementById("counter");
-const rateElement = document.getElementById("rate");
-
+const rateElement = document.getElementById("rate")!;
 const BuyA = document.getElementById("buyA") as HTMLButtonElement;
 const BuyB = document.getElementById("buyB") as HTMLButtonElement;
 const BuyC = document.getElementById("buyC") as HTMLButtonElement;
