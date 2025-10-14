@@ -2,21 +2,50 @@ let counter: number = 0;
 let rate: number = 0;
 
 document.body.innerHTML = `
-  <div>Counter: <span id="counter">0 </span></div>
-  <div>Growth rate: <span id="rate">0/s</span></div>
-  <button id="emoButton">😟</button>
+  <div>Counter: <span id="counter">0</span> cookies</div>
+  <div>Growth rate: <span id="rate">0</span> cookies/s</div>
+  <button id="emoButton" style="
+    font-size: 60px;
+    width: 120px; 
+    height: 120px;
+    border-radius: 60px;
+    border: 3px solid #c68b59;
+    background-color: #f5deb3;
+    cursor: pointer;
+  ">🍪</button>
 
-  <div style="margin-top:8px;">
-    <p><button id="buyA" disabled>A (+0.1/s, cost 10)</button></p>
-    <p><button id="buyB" disabled>B (+2.0/s, cost 100)</button></p>
-    <p><button id="buyC" disabled>C (+50/s, cost 1000)</button></p>
-  </div>
+  <div style="margin-top:12px;">
+      <p><button id="buyA" disabled style="
+        background-color: #e0f0ff;
+        color: #004080;
+        border: 2px solid #0070c0;
+        border-radius: 8px;
+        padding: 6px 12px;
+      ">Cursors (+0.1/s, cost 10)</button></p>
 
-   <div style="margin-top:8px;">
-    <p>Purchased :</p>
-    <p>A: <span id="countA">0</span></p>
-    <p>B: <span id="countB">0</span></p>
-    <p>C: <span id="countC">0</span></p>
+      <p><button id="buyB" disabled style="
+        background-color: #ffe6f0;
+        color: #802040;
+        border: 2px solid #c05080;
+        border-radius: 8px;
+        padding: 6px 12px;
+      ">Grandmas (+2.0/s, cost 100)</button></p>
+
+      <p><button id="buyC" disabled style="
+        background-color: #e6ffe6;
+        color: #206020;
+        border: 2px solid #40a040;
+        border-radius: 8px;
+        padding: 6px 12px;
+      ">Farms (+50/s, cost 1000)</button></p>
+    </div>
+
+    <div style="margin-top:12px;">
+      <p><b>Purchased :</b></p>
+      <p>Cursors: <span id="countA">0</span></p>
+      <p>Grandmas: <span id="countB">0</span></p>
+      <p>Farms: <span id="countC">0</span></p>
+    </div>
   </div>
 `;
 
@@ -53,13 +82,18 @@ function render(): void {
   CountB.textContent = `${boughtB}`;
   CountC.textContent = `${boughtC}`;
 
-  BuyA.textContent = `A (+0.1/s, cost ${buy(costA)})`;
-  BuyB.textContent = `B (+2.0/s, cost ${buy(costB)})`;
-  BuyC.textContent = `C (+50/s, cost ${buy(costC)})`;
+  BuyA.textContent = `Cursors (+0.1/s, cost ${buy(costA)})`;
+  BuyB.textContent = `Grandmas (+2.0/s, cost ${buy(costB)})`;
+  BuyC.textContent = `Farms (+50/s, cost ${buy(costC)})`;
 
   BuyA.disabled = counter < costA;
   BuyB.disabled = counter < costB;
   BuyC.disabled = counter < costC;
+
+  // 按钮启用状态颜色反馈
+  BuyA.style.opacity = BuyA.disabled ? "0.5" : "1.0";
+  BuyB.style.opacity = BuyB.disabled ? "0.5" : "1.0";
+  BuyC.style.opacity = BuyC.disabled ? "0.5" : "1.0";
 }
 
 button?.addEventListener("click", () => {
