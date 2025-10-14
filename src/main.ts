@@ -61,13 +61,23 @@ const CountA = document.getElementById("countA")!;
 const CountB = document.getElementById("countB")!;
 const CountC = document.getElementById("countC")!;
 
-let boughtA = 0;
-let boughtB = 0;
-let boughtC = 0;
+interface ItemDef {
+  name: string;
+  rate: number;
+  base: number;
+}
+const items: ItemDef[] = [
+  { name: "Cursors", rate: 0.1, base: 10 },
+  { name: "Grandmas", rate: 2.0, base: 100 },
+  { name: "Farms", rate: 50, base: 1000 },
+];
 
-let costA = 10;
-let costB = 100;
-let costC = 1000;
+const buyBtns: HTMLButtonElement[] = [BuyA, BuyB, BuyC];
+const countEls: HTMLElement[] = [CountA, CountB, CountC];
+
+let bought: number[] = items.map(() => 0);
+let cost: number[] = items.map((it) => it.base);
+
 const Price_Increase = 1.15;
 
 function buy(n: number): string {
@@ -77,23 +87,18 @@ function buy(n: number): string {
 
 function render(): void {
   counterElement!.textContent = `${buy(counter)}`;
-  rateElement.textContent = `${buy(rate)}/s`;
-  CountA.textContent = `${boughtA}`;
-  CountB.textContent = `${boughtB}`;
-  CountC.textContent = `${boughtC}`;
+  rateElement.textContent = `${buy(rate)}`;
 
-  BuyA.textContent = `Cursors (+0.1/s, cost ${buy(costA)})`;
-  BuyB.textContent = `Grandmas (+2.0/s, cost ${buy(costB)})`;
-  BuyC.textContent = `Farms (+50/s, cost ${buy(costC)})`;
+  for (let i = 0; i < items.length; i++) {
+    const it = items[i];
+    countEls[i].textContent = String(bought[i]);
 
-  BuyA.disabled = counter < costA;
-  BuyB.disabled = counter < costB;
-  BuyC.disabled = counter < costC;
-
-  // 按钮启用状态颜色反馈
-  BuyA.style.opacity = BuyA.disabled ? "0.5" : "1.0";
-  BuyB.style.opacity = BuyB.disabled ? "0.5" : "1.0";
-  BuyC.style.opacity = BuyC.disabled ? "0.5" : "1.0";
+    buyBtns[i].textContent = `${it.name} (+${buy(it.rate)}/s, cost ${
+      buy(cost[i])
+    })`;
+    buyBtns[i].disabled = counter < cost[i];
+    buyBtns[i].style.opacity = buyBtns[i].disabled ? "0.5" : "1.0";
+  }
 }
 
 button?.addEventListener("click", () => {
@@ -101,35 +106,18 @@ button?.addEventListener("click", () => {
   counterElement!.textContent = `${buy(counter)}`;
 });
 
-BuyA.addEventListener("click", () => {
-  if (counter >= costA) {
-    counter -= costA;
-    rate += 0.1;
-    boughtA += 1;
-    costA *= Price_Increase;
-    render();
-  }
-});
-
-BuyB.addEventListener("click", () => {
-  if (counter >= costB) {
-    counter -= costB;
-    rate += 2.0;
-    boughtB += 1;
-    costB *= Price_Increase;
-    render();
-  }
-});
-
-BuyC.addEventListener("click", () => {
-  if (counter >= costC) {
-    counter -= costC;
-    rate += 50.0;
-    boughtC += 1;
-    costC *= Price_Increase;
-    render();
-  }
-});
+for (let i = 0; i < items.length; i++) {
+  const it = items[i];
+  buyBtns[i].addEventListener("click", () => {
+    if (counter >= cost[i]) {
+      counter -= cost[i];
+      rate += it.rate;
+      bought[i] += 1;
+      cost[i] *= Price_Increase;
+      render();
+    }
+  });
+}
 
 let last = performance.now();
 
