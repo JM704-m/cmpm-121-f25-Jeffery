@@ -97,7 +97,6 @@ BuyC.addEventListener("click", () => {
   }
 });
 
-
 let last = performance.now();
 
 function animate(now: number) {
