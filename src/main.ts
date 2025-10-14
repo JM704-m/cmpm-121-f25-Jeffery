@@ -13,7 +13,7 @@ document.body.innerHTML = `
   </div>
 
    <div style="margin-top:8px;">
-    <p>Purchased –</p>
+    <p>Purchased :</p>
     <p>A: <span id="countA">0</span></p>
     <p>B: <span id="countB">0</span></p>
     <p>C: <span id="countC">0</span></p>
