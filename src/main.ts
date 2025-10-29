@@ -1,6 +1,6 @@
 let counter: number = 0;
 let rate: number = 0;
-
+// UI Layout
 document.body.innerHTML = `
   <div>Counter: <span id="counter">0</span> cookies</div>
   <div>Growth rate: <span id="rate">0</span> cookies/s</div>
@@ -77,6 +77,7 @@ document.body.innerHTML = `
   </div>
 `;
 
+// DOM Elements
 const button = document.getElementById("emoButton");
 const counterElement = document.getElementById("counter");
 const rateElement = document.getElementById("rate")!;
@@ -99,6 +100,7 @@ const DescC = document.getElementById("descC")!;
 const DescD = document.getElementById("descD")!;
 const DescE = document.getElementById("descE")!;
 
+// Item Definitions
 interface ItemDef {
   name: string;
   rate: number;
@@ -166,6 +168,7 @@ const cost: number[] = items.map((it) => it.base);
 
 const COST_MULTIPLIER = 1.15;
 
+// Update & Utility Functions
 function buy(n: number): string {
   const s = n.toFixed(2);
   return s.endsWith(".00") ? s.slice(0, -3) : s;
@@ -201,6 +204,7 @@ function render(): void {
   }
 }
 
+// Event Listeners
 button?.addEventListener("click", () => {
   counter += 1;
   counterElement!.textContent = buy(counter);
