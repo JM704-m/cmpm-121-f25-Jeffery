@@ -158,7 +158,7 @@ const DISABLED_STYLE = {
 const bought: number[] = items.map(() => 0);
 const cost: number[] = items.map((it) => it.base);
 
-const Price_Increase = 1.15;
+const COST_MULTIPLIER = 1.15;
 
 function buy(n: number): string {
   const s = n.toFixed(2);
@@ -207,7 +207,7 @@ for (let i = 0; i < items.length; i++) {
       counter -= cost[i];
       rate += it.rate;
       bought[i] += 1;
-      cost[i] *= Price_Increase;
+      cost[i] *= COST_MULTIPLIER;
       render();
     }
   });
