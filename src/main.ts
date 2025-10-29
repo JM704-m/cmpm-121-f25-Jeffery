@@ -81,9 +81,9 @@ const button = document.getElementById("emoButton");
 const counterElement = document.getElementById("counter");
 const rateElement = document.getElementById("rate")!;
 
-const BuyA = document.getElementById("buyA") as HTMLButtonElement;
-const BuyB = document.getElementById("buyB") as HTMLButtonElement;
-const BuyC = document.getElementById("buyC") as HTMLButtonElement;
+const cursorButton = document.getElementById("buyA") as HTMLButtonElement;
+const grandmaButton = document.getElementById("buyB") as HTMLButtonElement;
+const farmButton = document.getElementById("buyC") as HTMLButtonElement;
 const BuyD = document.getElementById("buyD") as HTMLButtonElement;
 const BuyE = document.getElementById("buyE") as HTMLButtonElement;
 
@@ -139,7 +139,13 @@ const items: ItemDef[] = [
   },
 ];
 
-const buyBtns: HTMLButtonElement[] = [BuyA, BuyB, BuyC, BuyD, BuyE];
+const buyBtns: HTMLButtonElement[] = [
+  cursorButton,
+  grandmaButton,
+  farmButton,
+  BuyD,
+  BuyE,
+];
 const countEls: HTMLElement[] = [CountA, CountB, CountC, CountD, CountE];
 const descEls: HTMLElement[] = [DescA, DescB, DescC, DescD, DescE];
 
