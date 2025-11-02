@@ -22,7 +22,7 @@ document.body.innerHTML = `
         border: 2px solid #0070c0;
         border-radius: 8px;
         padding: 6px 12px;
-      ">Cursors (+0.1/s, cost 10)</button><br/>
+      ">🖱️ Cursors (+0.1/s, cost 10)</button><br/>
       <small id="descA"></small>
     </p>
     <p>
@@ -32,7 +32,7 @@ document.body.innerHTML = `
         border: 2px solid #c05080;
         border-radius: 8px;
         padding: 6px 12px;
-      ">Grandmas (+2.0/s, cost 100)</button><br/>
+      ">👵 Grandmas (+2.0/s, cost 100)</button><br/>
       <small id="descB"></small>
     </p>
     <p>
@@ -42,7 +42,7 @@ document.body.innerHTML = `
         border: 2px solid #40a040;
         border-radius: 8px;
         padding: 6px 12px;
-      ">Farms (+50/s, cost 1000)</button><br/>
+      ">🌾 Farms (+50/s, cost 1000)</button><br/>
       <small id="descC"></small>
     </p>
     <p>
@@ -52,7 +52,7 @@ document.body.innerHTML = `
         border: 2px solid #c68b59;
         border-radius: 8px;
         padding: 6px 12px;
-      ">Factory (+100/s, cost 5000)</button><br/>
+      ">🏭 Factory (+100/s, cost 5000)</button><br/>
       <small id="descD"></small>
     </p>
     <p>
@@ -62,18 +62,18 @@ document.body.innerHTML = `
         border: 2px solid #6b7480;
         border-radius: 8px;
         padding: 6px 12px;
-      ">Mine (+500/s, cost 10000)</button><br/>
+      ">⛏️ Mine (+500/s, cost 10000)</button><br/>
       <small id="descE"></small>
     </p>
   </div>
 
   <div style="margin-top:8px;">
     <p>Purchased :</p>
-    <p>Cursors: <span id="countA">0</span></p>
-    <p>Grandmas: <span id="countB">0</span></p>
-    <p>Farms: <span id="countC">0</span></p>
-    <p>Factory: <span id="countD">0</span></p>
-    <p>Mine: <span id="countE">0</span></p>
+    <p>🖱️ Cursors: <span id="countA">0</span></p>
+    <p>👵 Grandmas: <span id="countB">0</span></p>
+    <p>🌾 Farms: <span id="countC">0</span></p>
+    <p>🏭 Factory: <span id="countD">0</span></p>
+    <p>⛏️ Mine: <span id="countE">0</span></p>
   </div>
 `;
 
@@ -110,31 +110,31 @@ interface ItemDef {
 
 const items: ItemDef[] = [
   {
-    name: "Cursors",
+    name: "🖱️ Cursors",
     rate: 0.1,
     base: 10,
     description: "Autoclicks occasionally to help press the cookie.",
   },
   {
-    name: "Grandmas",
+    name: "👵 Grandmas",
     rate: 2.0,
     base: 100,
     description: "A nice grandma who bakes cookies with love.",
   },
   {
-    name: "Farms",
+    name: "🌾 Farms",
     rate: 50,
     base: 1000,
     description: "Fields and ovens that mass-produce tasty cookies.",
   },
   {
-    name: "Factory",
+    name: "🏭 Factory",
     rate: 100,
     base: 5000,
     description: "Industrial cookie lines churning out fresh batches.",
   },
   {
-    name: "Mine",
+    name: "⛏️ Mine",
     rate: 500,
     base: 10000,
     description: "Deep shafts extracting rare cookie ore—very productive!",
