@@ -1,18 +1,26 @@
 let counter: number = 0;
 let rate: number = 0;
 // UI Layout
+document.body.style.cssText =
+  `margin:0; min-height:100vh; background: radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.06), transparent), linear-gradient(180deg, #0f172a, #0b1220); color:#e5e7eb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; display:flex; align-items:flex-start; justify-content:center; padding:40px;`;
 document.body.innerHTML = `
-  <div>Counter: <span id="counter">0</span> cookies</div>
+  <div id="panel" style="width: 720px; max-width: calc(100vw - 80px); background: rgba(148,163,184,0.24); border-radius: 16px; box-shadow: 0 15px 50px rgba(0,0,0,0.45); padding: 28px 28px 22px; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.08);"
+  >
+  <h1 style="margin:0 0 10px; font-size:28px; text-align:center; letter-spacing:0.5px; color:#f8fafc;">Cookie Studio</h1>
+  <div style="margin-bottom:8px; text-align:center; color:#cbd5e1;">Counter: <span id="counter">0</span> cookies</div>
+  <div style="margin-bottom:18px; text-align:center; color:#cbd5e1;">Growth rate: <span id="rate">0</span> cookies/s</div>
+  <div style="display:flex; justify-content:center; margin-bottom:16px;"> <span id="counter">0</span> cookies</div>
   <div>Growth rate: <span id="rate">0</span> cookies/s</div>
   <button id="emoButton" style="
     font-size: 60px;
     width: 120px;
     height: 120px;
     border-radius: 60px;
-    border: 3px solid #c68b59;
-    background-color: #f5deb3;
-    cursor: pointer;
+    border: 3px solid #e2c290;
+    background-color: #f2e3c6; box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    cursor: pointer; transition: transform .06s ease;
   ">🍪</button>
+  </div>
 
   <div style="margin-top:8px;">
     <p>
@@ -20,8 +28,8 @@ document.body.innerHTML = `
         background-color: #e0f0ff;
         color: #004080;
         border: 2px solid #0070c0;
-        border-radius: 8px;
-        padding: 6px 12px;
+        border-radius: 12px;
+        padding: 10px 14px;
       ">🖱️ Cursors (+0.1/s, cost 10)</button><br/>
       <small id="descA"></small>
     </p>
@@ -30,8 +38,8 @@ document.body.innerHTML = `
         background-color: #ffe6f0;
         color: #802040;
         border: 2px solid #c05080;
-        border-radius: 8px;
-        padding: 6px 12px;
+        border-radius: 12px;
+        padding: 10px 14px;
       ">👵 Grandmas (+2.0/s, cost 100)</button><br/>
       <small id="descB"></small>
     </p>
@@ -40,8 +48,8 @@ document.body.innerHTML = `
         background-color: #e6ffe6;
         color: #206020;
         border: 2px solid #40a040;
-        border-radius: 8px;
-        padding: 6px 12px;
+        border-radius: 12px;
+        padding: 10px 14px;
       ">🌾 Farms (+50/s, cost 1000)</button><br/>
       <small id="descC"></small>
     </p>
@@ -50,8 +58,8 @@ document.body.innerHTML = `
         background-color: #fff1d6;   /* Factory */
         color: #7a4b00;
         border: 2px solid #c68b59;
-        border-radius: 8px;
-        padding: 6px 12px;
+        border-radius: 12px;
+        padding: 10px 14px;
       ">🏭 Factory (+100/s, cost 5000)</button><br/>
       <small id="descD"></small>
     </p>
@@ -60,8 +68,8 @@ document.body.innerHTML = `
         background-color: #eef0f5;   /* Mine */
         color: #2b2f3a;
         border: 2px solid #6b7480;
-        border-radius: 8px;
-        padding: 6px 12px;
+        border-radius: 12px;
+        padding: 10px 14px;
       ">⛏️ Mine (+500/s, cost 10000)</button><br/>
       <small id="descE"></small>
     </p>
